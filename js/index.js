@@ -21,32 +21,28 @@ message.textBody = [];
 
 
 
-function buildMessage(message,subjectArr,senderArr,bodyArr){
-	//i'm declaring arrays that will pass through the function
-    
-	var theSubject = subjectArr[i];
-	var theSender = senderArr[i];
-	var theBody = bodyArr[i];
+	function buildMessage(message,subjectArr,senderArr,bodyArr){
+		//i'm declaring arrays that will pass through the function
+	    
+		var theSubject = subjectArr[i];
+		var theSender = senderArr[i];
+		var theBody = bodyArr[i];
 
-    //
-	for(var i=0;i<=bodyArr.length;i++){
+	    //
+		for(var i=0;i<=bodyArr.length;i++){
+			
+			var subject = message.subject.push(theSubject);
+			var sender = message.sender.push(theSender);
+			var body = message.textBody.push(theBody);
+	      
+	        var email = console.log("Message---"+' '+ "Subject:"+' '+subject+' '+ "Sender"+' '+sender+' '+'Body'+ ' '+body);
+		}
+
 		
-		var subject = message.subject.push(theSubject);
-		var sender = message.sender.push(theSender);
-		var body = message.textBody.push(theBody);
-      
-        var email = console.log("Message---"+' '+ "Subject:"+' '+subject+' '+ "Sender"+' '+sender+' '+'Body'+ ' '+body);
+	    return message;
+
 	}
-
-	
-    return message;
-
-}
-buildMessage(message,subject,sender,body);
-
-
-
-
+	buildMessage(message,subject,sender,body);
 
 
 };
