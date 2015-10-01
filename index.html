@@ -19,15 +19,53 @@
 				sender
 				subject
  -->
- 			<!-- we can use the same method we did for the out-of-this-world assignment -->
+ 			<!-- we can use the same method we did for the out-of-this-world assignment.doing mouseovers and mouse out
+
+
+ 			-->
+			<!-- 
+
+				these should be placed in the javascript
+				we can use these event listeners to click something and show the properties. below is an example for mouseovers
+
+				//mouseover
+				var subtitle = document.getElementById('subtitle');
+				subtitle.addEventListener('mouseover',function(){
+					subtitle.style.backgroundColor = '#FFA1A1';
+				});
+
+				//mouseout
+				//change the color back to white
+				//it's called a call back function
+				subtitle.addEventListener('mouseout',function(){
+					subtitle.style.backgroundColor = 'inherit';
+				}) -->
+
 
  			<!-- 5. You must show an inbox count somewhere on the page to show the current number of messages in your inbox. -->
 
+ 				<!-- we can do this by inputting the value of the message.length and inserting it to display where ever we want 
+
+ 				something similar to:
+ 				message.length
+ 				assume message will be made into an array of objects
+ 			 -->
+
  			<!-- 6. Set a recurring function to via the JavaScript setInterval function that will call our existing getNewMessage function that we have created for you that will return a newly created message with the same properties as your previous messages. -->
+
+ 				<!-- need to call the getNewMessage from js -->
 
 			<!-- 7. All CSS styles should be created in the css\style.css file included in the project. -->
 
+				<!-- css is used for styling
+				*in this case we will position each message
+				to look a certain way
+				*we also will change the look of the message when the mouse hovers over it, until clicked. -->
+
+
 			<!-- 8. All JavaScript should be created in the <head> element in your included index.html file inside of the window.onload function already created in the <head> section. -->
+
+				<!-- *do we add our own js to the mail-generator or create a new js file to make it seperate? -->
 
 			<!-- 9. Commit your code often and when you are completed send us a pull request from your repository so that we may review your code. -->
 
