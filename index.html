@@ -6,13 +6,77 @@
       window.onload = function(){
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
         // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
+
+        var messageList = document.createElement('div');
+		messageList.id = "messageList";
+		document.getElementById('main').appendChild(messageList);
+
+
+
+		var displayMessage = function(){
+
+			for(var i=0;i<window.geemails.length;i++){
+					//this allows me to list it each message that passes through
+				var div = document.createElement('div');
+				div.id = "message_"+(i);
+				div.innerHTML = 'Message';
+				div.className = "aMessageAtATime";
+				document.getElementById('messageList').appendChild(div);
+
+				var subjectTitle = document.createElement('p');
+				subjectTitle.id = 'subject';
+				subjectTitle.innerHTML = window.geemails[i].subject;
+				//subject at the end of this innerHTML has an error in the console
+				document.getElementById("message_"+(i)).appendChild(subjectTitle);
+				
+				var from = document.createElement('p');
+				from.id = 'description';
+				from.innerHTML = "From: " + window.geemails[i].sender;
+				document.getElementById("message_"+(i)).appendChild(from);
+				
+				var aDate = document.createElement('p');
+				aDate.id = 'date';
+				aDate.innerHTML = window.geemails[i].date;
+				document.getElementById("message_"+(i)).appendChild(aDate);
+
+				var textBody = document.createElement('p');
+				textBody.id = 'body';
+				textBody.innerHTML = window.geemails[i].body;
+				document.getElementById("message_"+(i)).appendChild(textBody);
+			}
+
+		};
+		//calling the function
+		displayMessage();
+
+
+
+
+		//hiding the context
+		var hidingContext = document.querySelectorAll('p');
+		// //hide the subnav under 'starstuff'
+		var hidingContextLoop = function(){
+			for(var i=0;i<(window.geemails.length * 4);i++){
+				hidingContext[i].style.display = 'none';
+			}
+		}
+		//calling function
+		hidingContextLoop();
+
+
+
+
+
+
+
+
         
       };
     </script>
 	</head>
 	<body>
 		<div class="container" id="main">
-			Build Me!
+			<!-- Build Me! -->
 		</div>
 	</body>
 </html>
