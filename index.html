@@ -88,7 +88,7 @@
 				var openMessage = document.getElementById('message_'+(i));
 				openMessage.addEventListener('click',function(){
 					this.querySelector('.divWithContent').style.display = 'block';
-					console.log(this);
+					
 				});
 			}
 		}
@@ -155,8 +155,26 @@
 
 
 
+		
+		var myVar = setInterval(myTimer, 3000);
+
+		function myTimer() {
+		    var aloha = document.createElement('div');
+		    aloha.innerHTML = getNewMessage();
+		    document.getElementById('newMessageFiller').appendChild(aloha);
+
+		}
+		
+		var newMessageFiller = document.createElement('div');
+		newMessageFiller.id = 'newMessageFiller';
+		
+		document.body.appendChild(newMessageFiller);
+
+		
+		
 
 
+		
         
       };
     </script>
