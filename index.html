@@ -23,47 +23,34 @@
 				div.id = "message_"+(i);
 				div.className = "aMessageAtATime";
 				document.getElementById('messageList').appendChild(div);
-
-				var pMessage = document.createElement('p');
-				pMessage.id = 'pMessage'+(i);
-				pMessage.className = 'pMessage';
-				pMessage.innerHTML = 'Message';
-				document.getElementById("message_"+(i)).appendChild(pMessage);
-				// pMessage.addEventListener('click',function(){
-					
-				// 	hidingContext.style.display='block';
-				// });
-
-				var anotherDiv = document.createElement('div');
-				anotherDiv.id = 'div_'+(i);
-				anotherDiv.className = 'divWithContent';
-				document.getElementById('message_'+(i)).appendChild(anotherDiv);
-
+				
 				var subjectTitle = document.createElement('p');
 				subjectTitle.id = 'subject'+(i);
 				subjectTitle.className = 'subject';
 				subjectTitle.innerHTML = window.geemails[i].subject;
 				//subject at the end of this innerHTML has an error in the console
-				document.getElementById("div_"+(i)).appendChild(subjectTitle);
-				
-				var from = document.createElement('p');
-				from.id = 'from'+(i);
-				from.className = 'from';
-				from.innerHTML = "From: " + window.geemails[i].sender;
-				document.getElementById("div_"+(i)).appendChild(from);
+				document.getElementById("message_"+(i)).appendChild(subjectTitle);
 				
 				var aDate = document.createElement('p');
 				aDate.id = 'date'+(i);
 				aDate.className = 'date';
 				aDate.innerHTML = window.geemails[i].date;
-				document.getElementById("div_"+(i)).appendChild(aDate);
+				document.getElementById("message_"+(i)).appendChild(aDate);
+
+				var from = document.createElement('div');
+				from.id = 'from'+(i);
+				from.className = 'from';
+				from.innerHTML = "From: " + window.geemails[i].sender;
+				document.getElementById("message_"+(i)).appendChild(from);
+
 
 				var textBody = document.createElement('p');
 				textBody.id = 'body'+(i);
 				textBody.className = 'body';
 				textBody.innerHTML = window.geemails[i].body;
-				document.getElementById("div_"+(i)).appendChild(textBody);
+				document.getElementById("from"+(i)).appendChild(textBody);
 			
+				
 
 
 				// var hidingContext = document.getElementById('div_'+(i));
@@ -82,12 +69,12 @@
 		function clickingTheMessage(){
 			for(var i=0;i<window.geemails.length;i++){
 
-				var hidingContext = document.getElementById('div_'+(i));
+				var hidingContext = document.getElementById('body'+(i));
 				hidingContext.style.display = 'none';
 
 				var openMessage = document.getElementById('message_'+(i));
 				openMessage.addEventListener('click',function(){
-					this.querySelector('.divWithContent').style.display = 'block';
+					this.querySelector('.body').style.display = 'block';
 					
 				});
 			}
@@ -107,14 +94,7 @@
 
 		for(var i=0;i<window.geemails.length;i++){
 
-			//highlight over the subject
-			document.getElementById('pMessage'+(i)).addEventListener("mouseover", function(){ 
-				this.style.backgroundColor = '#D3D3D3'; 
-			});
-
-			document.getElementById('pMessage'+(i)).addEventListener("mouseout", function(){ 
-				this.style.backgroundColor = 'inherit'; 
-			});
+			
 
 			//highlight over the subject
 			document.getElementById('subject'+(i)).addEventListener("mouseover", function(){ 
@@ -132,7 +112,19 @@
 
 			document.getElementById('from'+(i)).addEventListener("mouseout", function(){ 
 				this.style.backgroundColor = 'inherit'; 
+
 			});
+
+			document.getElementById('message_'+(i)).addEventListener('mouseover',function(){
+				this.querySelector('.body').style.display = 'block';
+			})
+
+			document.getElementById('message_'+(i)).addEventListener('mouseout',function(){
+					this.querySelector('.body').style.display = 'none';
+					
+			});
+
+
 
 			//highlight over dates
 			document.getElementById('date'+(i)).addEventListener("mouseover", function(){ 
@@ -154,15 +146,18 @@
 		}
 
 
-
+		//this adds messages to the server
 		
-		var myVar = setInterval(myTimer, 3000);
+		var myVar = setInterval(setIntervalForNewMessage, 3000);
 
-		function myTimer() {
-		    var aloha = document.createElement('div');
-		    aloha.innerHTML = getNewMessage();
-		    document.getElementById('newMessageFiller').appendChild(aloha);
-
+		function setIntervalForNewMessage() {
+			
+			    var aloha = document.createElement('div');
+			    aloha.className = 'aMessageAtATime';
+			    aloha.id = 'newMessages'+(i);
+			    aloha.innerHTML = getNewMessage();
+			    document.getElementById('newMessageFiller').appendChild(aloha);
+				console.log(getNewMessage());
 		}
 		
 		var newMessageFiller = document.createElement('div');

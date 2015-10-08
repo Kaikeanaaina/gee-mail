@@ -1,0 +1,21 @@
+.sender {
+	display:inline;
+}
+
+.subject {
+	display: inline;
+	text-align: center;
+}
+
+.date {
+	display: inline;
+	
+}
+
+.aMessageAtATime {
+	border-style: solid;
+    border-right: none;
+    border-left: none;
+    border-top: none;
+    padding: 20px;
+}
