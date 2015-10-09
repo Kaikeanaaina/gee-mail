@@ -1,14 +1,25 @@
+#geemailTitle {
+	text-align: center;
+	font-size: 80px;
+	background-color: red;
+	margin: 10px
+	
+}
+
 .sender {
 	display:inline;
+
 }
 
 .subject {
 	display: inline;
 	text-align: center;
+
 }
 
 .date {
 	display: inline;
+	float: right;
 	
 }
 

@@ -7,13 +7,32 @@
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
         // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
 
+        var geemailTitle = document.createElement('h1');
+        geemailTitle.id = 'geemailTitle';
+        geemailTitle.innerHTML = 'gee-mail';
+        document.getElementById('main').appendChild(geemailTitle);
+
+
+
+
+        var countingMessages = document.createElement('p');
+        countingMessages.innerHTML = 'test';
+        countingMessages.id = 'countingMessages';
+        document.getElementById('main').appendChild(countingMessages);
+
+  //       var countingMessages_ = setInterval(counting_Messages, 3000);
+		// function counting_Messages() {
+		// 	var inboxStart = window.geemails.length;
+		// 	var new inboxStart += 1;
+		// 	return inboxStart;
+        	
+		// }
+
 
 
         var messageList = document.createElement('div');
 		messageList.id = "messageList";
 		document.getElementById('main').appendChild(messageList);
-
-
 
 		var displayMessage = function(){
 
@@ -24,7 +43,7 @@
 				div.className = "aMessageAtATime";
 				document.getElementById('messageList').appendChild(div);
 				
-				var subjectTitle = document.createElement('p');
+				var subjectTitle = document.createElement('h4');
 				subjectTitle.id = 'subject'+(i);
 				subjectTitle.className = 'subject';
 				subjectTitle.innerHTML = window.geemails[i].subject;
@@ -50,19 +69,13 @@
 				textBody.innerHTML = window.geemails[i].body;
 				document.getElementById("from"+(i)).appendChild(textBody);
 			
-				
-
-
 				// var hidingContext = document.getElementById('div_'+(i));
 				// hidingContext.style.display= 'none';
 
 			}
-
 		};
 		//calling the function
 		displayMessage();
-
-
 
 
 		//hiding the context
@@ -83,73 +96,22 @@
 		clickingTheMessage();	
 
 
-		//document.querySelector(".divWithContent").style.backgroundColor = "red";
-
-
-	
-
-		
-
-
 
 		for(var i=0;i<window.geemails.length;i++){
-
-			
-
 			//highlight over the subject
-			document.getElementById('subject'+(i)).addEventListener("mouseover", function(){ 
-				this.style.backgroundColor = '#D3D3D3'; 
-			});
-
-			document.getElementById('subject'+(i)).addEventListener("mouseout", function(){ 
-				this.style.backgroundColor = 'inherit'; 
-			});
-
-			//highlight over sender
-			document.getElementById('from'+(i)).addEventListener("mouseover", function(){ 
-				this.style.backgroundColor = '#D3D3D3'; 
-			});
-
-			document.getElementById('from'+(i)).addEventListener("mouseout", function(){ 
-				this.style.backgroundColor = 'inherit'; 
-
-			});
-
 			document.getElementById('message_'+(i)).addEventListener('mouseover',function(){
 				this.querySelector('.body').style.display = 'block';
 			})
 
 			document.getElementById('message_'+(i)).addEventListener('mouseout',function(){
-					this.querySelector('.body').style.display = 'none';
-					
+					this.querySelector('.body').style.display = 'none';		
 			});
 
-
-
-			//highlight over dates
-			document.getElementById('date'+(i)).addEventListener("mouseover", function(){ 
-				this.style.backgroundColor = '#D3D3D3'; 
-			});
-
-			document.getElementById('date'+(i)).addEventListener("mouseout", function(){ 
-				this.style.backgroundColor = 'inherit'; 
-			});
-
-			//highlight over textbody
-			document.getElementById('body'+(i)).addEventListener("mouseover", function(){ 
-				this.style.backgroundColor = '#D3D3D3'; 
-			});
-
-			document.getElementById('body'+(i)).addEventListener("mouseout", function(){ 
-				this.style.backgroundColor = 'inherit'; 
-			});
 		}
 
 
 		//this adds messages to the server
-		
 		var myVar = setInterval(setIntervalForNewMessage, 3000);
-
 		function setIntervalForNewMessage() {
 			
 			    var aloha = document.createElement('div');
@@ -159,17 +121,9 @@
 			    document.getElementById('newMessageFiller').appendChild(aloha);
 				console.log(getNewMessage());
 		}
-		
 		var newMessageFiller = document.createElement('div');
 		newMessageFiller.id = 'newMessageFiller';
-		
 		document.body.appendChild(newMessageFiller);
-
-		
-		
-
-
-		
         
       };
     </script>
