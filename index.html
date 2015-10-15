@@ -7,29 +7,35 @@
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
         // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
 
+        //title
         var geemailTitle = document.createElement('h1');
         geemailTitle.id = 'geemailTitle';
         geemailTitle.innerHTML = 'gee-mail';
         document.getElementById('main').appendChild(geemailTitle);
 
-
-
-
-        var countingMessages = document.createElement('p');
-        countingMessages.innerHTML = 'test';
+        //giving a count of messages
+        var countingMessages = document.createElement('div');
+        countingMessages.innerHTML = 'You have '+ counting_Messages() + ' messages.';
         countingMessages.id = 'countingMessages';
         document.getElementById('main').appendChild(countingMessages);
 
-  //       var countingMessages_ = setInterval(counting_Messages, 3000);
-		// function counting_Messages() {
-		// 	var inboxStart = window.geemails.length;
-		// 	var new inboxStart += 1;
-		// 	return inboxStart;
-        	
-		// }
 
 
+		//showing the length
 
+        var counter = window.geemails.length;
+        
+        console.log(counter);
+
+		function counting_Messages() {	
+			return counter;	
+		}
+
+		
+        /////*************************************
+        // var countingMessages_ = setInterval(counting_Messages, 3000);
+		
+        //making the skeleton
         var messageList = document.createElement('div');
 		messageList.id = "messageList";
 		document.getElementById('main').appendChild(messageList);
@@ -77,7 +83,6 @@
 		//calling the function
 		displayMessage();
 
-
 		//hiding the context
 		function clickingTheMessage(){
 			for(var i=0;i<window.geemails.length;i++){
@@ -95,8 +100,7 @@
 
 		clickingTheMessage();	
 
-
-
+		//action mouseover and mouseout 
 		for(var i=0;i<window.geemails.length;i++){
 			//highlight over the subject
 			document.getElementById('message_'+(i)).addEventListener('mouseover',function(){
@@ -109,18 +113,36 @@
 
 		}
 
-
-		//this adds messages to the server
+		// adds messages to the server
 		var myVar = setInterval(setIntervalForNewMessage, 3000);
 		function setIntervalForNewMessage() {
 			
-			    var aloha = document.createElement('div');
-			    aloha.className = 'aMessageAtATime';
-			    aloha.id = 'newMessages'+(i);
-			    aloha.innerHTML = getNewMessage();
-			    document.getElementById('newMessageFiller').appendChild(aloha);
+			 //    var insertMessage = document.createElement('div');
+			 //    insertMessage.className = 'aMessageAtATime';
+			 //    insertMessage.innerHTML = getNewMessage();
+			 //    document.getElementById('newMessageFiller').appendChild(insertMessage);
+				// console.log(getNewMessage());
+				
+
+				var div = document.createElement('div');
+				div.className = 'aMessageAtATime';
+				div.id = "message_";
+				div.innerHTML = getNewMessage();
+				document.getElementById('newMessageFiller').appendChild(div);
+
+				
 				console.log(getNewMessage());
+				add();
+				console.log(counter);
+
 		}
+		
+		function add() {
+
+		    return counter += 1;
+		}
+
+		//a place where new messages can go to
 		var newMessageFiller = document.createElement('div');
 		newMessageFiller.id = 'newMessageFiller';
 		document.body.appendChild(newMessageFiller);
