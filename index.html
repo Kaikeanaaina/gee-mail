@@ -132,27 +132,27 @@
 				var subjectTitle = document.createElement('h4');
 				subjectTitle.className = 'subject';
 				subjectTitle.id = 'subject'+idNewMessages();
-				subjectTitle.innerHTML = window.geemails.subject;
+				subjectTitle.innerHTML = getNewMessage().subject;
 				//subject at the end of this innerHTML has an error in the console
 				document.getElementById("message_"+idNewMessages()).appendChild(subjectTitle);
 				
 				var aDate = document.createElement('p');
 				aDate.id = 'date'+idNewMessages();
 				aDate.className = 'date';
-				aDate.innerHTML = window.geemails.date;
+				aDate.innerHTML = getNewMessage().date;
 				document.getElementById("message_"+idNewMessages()).appendChild(aDate);
 
 				var from = document.createElement('div');
 				from.id = 'from'+idNewMessages();
 				from.className = 'from';
-				from.innerHTML = "From: " + window.geemails.sender;
+				from.innerHTML = "From: " + getNewMessage().sender;
 				document.getElementById("message_"+idNewMessages()).appendChild(from);
 
 
 				var textBody = document.createElement('p');
 				textBody.id = 'body'+idNewMessages();
 				textBody.className = 'body';
-				textBody.innerHTML = window.geemails.body;
+				textBody.innerHTML = getNewMessage().body;
 				document.getElementById("from"+idNewMessages()).appendChild(textBody);
 
 				//i need to call the proper elements 
@@ -160,6 +160,26 @@
 				function idNewMessages(){
 					return counter.valueOf()
 				};
+
+
+				//the actions for the new messages
+				var hidingContext = document.getElementById('body'+idNewMessages());
+				hidingContext.style.display = 'none';
+
+				var openMessage = document.getElementById('message_'+idNewMessages());
+				openMessage.addEventListener('click',function(){
+					this.querySelector('.body').style.display = 'block';
+				});
+					
+				//mouseover and mouseout actions for the new messages
+				document.getElementById('message_'+idNewMessages()).addEventListener('mouseover',function(){
+					this.querySelector('.body').style.display = 'block';
+				})
+
+				document.getElementById('message_'+idNewMessages()).addEventListener('mouseout',function(){
+					this.querySelector('.body').style.display = 'none';		
+				});
+
 
 
 
