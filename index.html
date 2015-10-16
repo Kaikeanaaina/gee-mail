@@ -15,21 +15,22 @@
 
         //giving a count of messages
         var countingMessages = document.createElement('div');
-        countingMessages.innerHTML = 'You have '+ counting_Messages() + ' messages.';
         countingMessages.id = 'countingMessages';
         document.getElementById('main').appendChild(countingMessages);
 
 
 
-		//showing the length
-
         var counter = window.geemails.length;
-        
-        console.log(counter);
 
-		function counting_Messages() {	
-			return counter;	
+        function add() {
+
+		    return counter += 1;
 		}
+
+        function myFunction(){
+    		document.getElementById("countingMessages").innerHTML = 'You have '+ '<span>'+add()+'</span>' + ' messages.';
+		}
+
 
 		
         /////*************************************
@@ -113,39 +114,69 @@
 
 		}
 
-		// adds messages to the server
-		var myVar = setInterval(setIntervalForNewMessage, 3000);
-		function setIntervalForNewMessage() {
-			
-			 //    var insertMessage = document.createElement('div');
-			 //    insertMessage.className = 'aMessageAtATime';
-			 //    insertMessage.innerHTML = getNewMessage();
-			 //    document.getElementById('newMessageFiller').appendChild(insertMessage);
-				// console.log(getNewMessage());
-				
-
-				var div = document.createElement('div');
-				div.className = 'aMessageAtATime';
-				div.id = "message_";
-				div.innerHTML = getNewMessage();
-				document.getElementById('newMessageFiller').appendChild(div);
-
-				
-				console.log(getNewMessage());
-				add();
-				console.log(counter);
-
-		}
-		
-		function add() {
-
-		    return counter += 1;
-		}
-
 		//a place where new messages can go to
 		var newMessageFiller = document.createElement('div');
 		newMessageFiller.id = 'newMessageFiller';
 		document.body.appendChild(newMessageFiller);
+
+		// adds messages to the server
+		var myVar = setInterval(setIntervalForNewMessage, 3000);
+		function setIntervalForNewMessage() {
+			
+					
+				var div = document.createElement('div');
+				div.className = 'aMessageAtATime';
+				div.id = "message_"+idNewMessages();
+				document.getElementById('newMessageFiller').appendChild(div);
+				
+				var subjectTitle = document.createElement('h4');
+				subjectTitle.className = 'subject';
+				subjectTitle.id = 'subject'+idNewMessages();
+				subjectTitle.innerHTML = window.geemails.subject;
+				//subject at the end of this innerHTML has an error in the console
+				document.getElementById("message_"+idNewMessages()).appendChild(subjectTitle);
+				
+				var aDate = document.createElement('p');
+				aDate.id = 'date'+idNewMessages();
+				aDate.className = 'date';
+				aDate.innerHTML = window.geemails.date;
+				document.getElementById("message_"+idNewMessages()).appendChild(aDate);
+
+				var from = document.createElement('div');
+				from.id = 'from'+idNewMessages();
+				from.className = 'from';
+				from.innerHTML = "From: " + window.geemails.sender;
+				document.getElementById("message_"+idNewMessages()).appendChild(from);
+
+
+				var textBody = document.createElement('p');
+				textBody.id = 'body'+idNewMessages();
+				textBody.className = 'body';
+				textBody.innerHTML = window.geemails.body;
+				document.getElementById("from"+idNewMessages()).appendChild(textBody);
+
+				//i need to call the proper elements 
+				//for counter to work in idNewMessages
+				function idNewMessages(){
+					return counter.valueOf()
+				};
+
+
+
+				console.log('hi'+idNewMessages());
+				console.log(counter);
+				console.log(getNewMessage());
+
+				myFunction();
+
+		}
+
+		setIntervalForNewMessage();
+		
+
+		
+
+		
         
       };
     </script>
